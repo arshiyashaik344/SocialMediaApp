@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Card, Icon, Label, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+
 
 import { AuthContext } from '../context/auth';
 import LikeButton from './LikeButton';
@@ -13,6 +14,8 @@ function PostCard({
 }) {
   const { user } = useContext(AuthContext);
 
+ 
+  
   return (
     <Card fluid>
       <Card.Content>

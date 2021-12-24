@@ -1,5 +1,4 @@
 import React, { useContext, useState, useRef } from 'react';
-// import gql from 'graphql-tag';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import moment from 'moment';
 import {
