@@ -57,7 +57,6 @@ module.exports = {
     async deletePost(_, { postId }, context) {
       const user = checkAuth(context);
       const { dataSources : { postMDS, commentMDS }} = context;
-
       try {
         // const post = await Post.findById(postId);
         const post = await postMDS.getSinglePost(postId);
@@ -66,7 +65,8 @@ module.exports = {
           // await post.delete();
           await postMDS.deletePost(postId);
           await commentMDS.deleteAllComments(postId);
-          return 'Post deleted successfully';
+          // return 'Post deleted successfully';
+          return post;
         } else {
           throw new AuthenticationError('Action not allowed');
         }

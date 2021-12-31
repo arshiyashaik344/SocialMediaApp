@@ -24,13 +24,13 @@ function SinglePost(props) {
   const [comment, setComment] = useState('');
 
   const {
-    data: { getPost } = {}
+    data: { getPost } = {}, error
   } = useQuery(FETCH_POST_QUERY, {
     variables: {
       postId
     }
   });
-
+  
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
       setComment('');
@@ -47,8 +47,10 @@ function SinglePost(props) {
   }
 
   let postMarkup;
+    
+  
   if (!getPost) {
-    postMarkup = <p>Loading post..</p>;
+    postMarkup = <h3>{!error ? 'Loading Post...' : 'Post not found!!'}</h3>;
   } else {
     const {
       id,

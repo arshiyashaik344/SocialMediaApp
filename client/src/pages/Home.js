@@ -15,10 +15,8 @@ function Home() {
     data: { getPosts: posts } = {}
   } = useQuery(FETCH_POSTS_QUERY);
 
+  //Logic for pagination (19-27)
   const [pageNumber, setPageNumber] = useState(0);
-
-
-  //Logic for pagination (22-30)
   const postsPerPage = 9;
   const pagesVisited = pageNumber * postsPerPage;
   

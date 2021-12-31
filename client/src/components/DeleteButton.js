@@ -11,22 +11,51 @@ function DeleteButton({ postId, commentId, callback }) {
 
   const mutation = commentId ? DELETE_COMMENT_MUTATION : DELETE_POST_MUTATION;
 
-  const [deletePostOrMutation] = useMutation(mutation, {
-    update(proxy) {
+  const [deletePostOrComment] = useMutation(mutation, {
+
+    optimisticResponse: (vars) => {
+     if (!commentId) {
+       return {
+         deletePost : {
+          id: vars.postId,
+          __typename:'Post'
+         }
+       }
+     }
+    },
+
+    update: (cache, result) => {
       setConfirmOpen(false);
       if (!commentId) {
-        const data = proxy.readQuery({
+
+        console.log(result);
+        const data = cache.readQuery({
           query: FETCH_POSTS_QUERY
         });
-        // data.getPosts = data.getPosts.filter((p) => p.id !== postId);
-        // proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
+        // // data.getPosts = data.getPosts.filter((p) => p.id !== postId);
+        // // proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
 
-        proxy.writeQuery({
+        let updatedPosts = data.getPosts.filter((p) => p.id !== postId );
+
+        cache.writeQuery({
           query : FETCH_POSTS_QUERY,
           data : {
-            getPosts : [data.getPosts.filter((p) => p.id !== postId)]
+            ...data,
+            getPosts : [...updatedPosts]
           }
-        })
+        });
+
+        // cache.modify({
+        //   fields: {
+        //     posts : (existingPosts) => {
+        //       return existingPosts.filter((postRef) => {
+        //         return cache.identify(postRef) !== postId;
+        //       });
+        //     }
+        //   }
+        // });
+
+        cache.evict({ id: postId });
       }
       if (callback) callback();
     },
@@ -50,7 +79,7 @@ function DeleteButton({ postId, commentId, callback }) {
       <Confirm
         open={confirmOpen}
         onCancel={() => setConfirmOpen(false)}
-        onConfirm={deletePostOrMutation}
+        onConfirm={deletePostOrComment}
       />
     </>
   );
@@ -58,7 +87,9 @@ function DeleteButton({ postId, commentId, callback }) {
 
 const DELETE_POST_MUTATION = gql`
   mutation deletePost($postId: ID!) {
-    deletePost(postId: $postId)
+    deletePost(postId: $postId) {
+      id
+    }
   }
 `;
 

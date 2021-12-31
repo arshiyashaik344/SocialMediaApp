@@ -20,6 +20,22 @@ const authLink = setContext(() => {
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
+  
+  //Logic when we use offset and limit in useQuery hook
+  // cache: new InMemoryCache({
+  //   typePolicies: {
+  //     Query: {
+  //       fields:{
+  //         posts: {
+  //           keyArgs: ["postId"],
+  //           merge: (existingPosts=[], incomingPosts) => {
+  //             return [...existingPosts, ...incomingPosts];
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // })
 });
 
 export default (
