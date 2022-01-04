@@ -33,3 +33,30 @@ const client = new ApolloClient({
 //but it everytime makes a network call rather updating the cache
 
 // useQuery can have offset and limit params with fetchmore options
+
+//When the network is slow or offline - Apollo fetches data from server to make sure it won't result 
+//in bad data but to avoid backend call it can fetch from cache 
+const client = new ApolloClient({
+    cache : new InMemoryCache({
+        typePolicies: {
+            post: {
+                read: (existingCachedValue, helpers) => {
+                    const queriedPostId = helpers.args.id;
+                    //creating our own return object
+                    // return {
+                    //     __ref: queriedPostId
+                    // }
+                    //making use of helpers object
+                    return helpers.toReference({
+                        id : queriedPostId,
+                        typename: 'Post'
+                    })
+                }
+            }
+        }
+    })
+})
+
+//we can use apollo-rest-link package to make use of restApis
+
+//Incase we have frequent data changes in the server then we can make use of pollInterval in useQuery hook

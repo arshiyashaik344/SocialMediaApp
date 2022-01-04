@@ -5,6 +5,7 @@
   "dependencies": {
     "@apollo/client": "^3.4.17",
     "apollo-link-context": "^1.0.18",
+    "apollo-link-ws": "^1.0.20",
     "graphql": "^15.7.2",
     "graphql-tag": "^2.10.1",
     "jwt-decode": "^2.2.0",

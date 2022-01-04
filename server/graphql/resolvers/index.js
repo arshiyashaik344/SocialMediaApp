@@ -5,7 +5,7 @@ const commentsResolvers = require('./comments');
 
 module.exports = {
   Post: {
-    likeCount: (parent) => parent.likes.length,
+    likesCount: (parent) => parent.likes.length,
     
     comments: async (parent, _, {dataSources : { commentMDS }}) => {
       const comments = await commentMDS.getAllComments( parent._id);
@@ -15,7 +15,7 @@ module.exports = {
       return comments;
     } ,
 
-    commentCount: async (parent, _, {dataSources : { commentMDS }}) => {
+    commentsCount: async (parent, _, {dataSources : { commentMDS }}) => {
       const comments = await commentMDS.getAllComments( parent._id);
       return comments.length;
     }

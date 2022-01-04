@@ -15,6 +15,21 @@ function Home() {
     data: { getPosts: posts } = {}
   } = useQuery(FETCH_POSTS_QUERY);
 
+  // *** can be invoked incase of subscription ***
+  // useEffect(() => {
+  //   subscribeToMore({
+  //     document: NEW_POST_SUBSCRIPTION,
+  //     updateQuery: (previousQueryResult, {subscriptionData}) => {
+  //       const newPost = subscriptionData.data.newPost;
+  //       const clonePosts = previousQueryResult.posts;
+  //       return {
+  //         ...previousQueryResult,
+  //         posts: [newPost, ...previousQueryResult.posts]
+  //       }
+  //     }
+  //   })
+  // }, [subscribeToMore])
+
   //Logic for pagination (19-27)
   const [pageNumber, setPageNumber] = useState(0);
   const postsPerPage = 9;

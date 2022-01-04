@@ -65,5 +65,10 @@ module.exports = {
         throw new UserInputError('Post not found');
       }
     }
+  },
+  Subscription: {
+    newComment: {
+      subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_COMMENT')
+    }
   }
 };
