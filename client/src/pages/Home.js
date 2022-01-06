@@ -30,7 +30,8 @@ function Home() {
   //   })
   // }, [subscribeToMore])
 
-  //Logic for pagination (19-27)
+  // *** Logic for pagination (35-43) ***
+
   const [pageNumber, setPageNumber] = useState(0);
   const postsPerPage = 9;
   const pagesVisited = pageNumber * postsPerPage;
@@ -71,7 +72,7 @@ function Home() {
     {loading ? ' ' : 
       <ReactPaginate 
       previousLabel = 'Previous'
-      nextLabel = "Next"
+      nextLabel = 'Next'
       pageCount={pageCount}
       onPageChange= {changePage}
       containerClassName='paginationBttns'

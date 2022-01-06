@@ -41,3 +41,10 @@
   color: white;
   background-color: #2b2eff;
 }
+
+.paginationDisabled a:hover {
+  cursor: not-allowed;
+  color: black;
+  background-color: gainsboro;
+  border: 1px solid black;
+}
