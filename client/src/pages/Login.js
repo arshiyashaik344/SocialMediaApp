@@ -16,18 +16,18 @@ function Login(props) {
   });
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    update(
-      _,
-      {
-        data: { login: userData }
-      }
-    ) {
+    update(_, { data: { login: userData } }) {
       context.login(userData);
+      // eslint-disable-next-line react/prop-types
       props.history.push('/');
     },
     onError(err) {
       console.log(err);
-      setErrors(err&&err.graphQLErrors[0]?err.graphQLErrors[0].extensions.errors:{});
+      setErrors(
+        err && err.graphQLErrors[0]
+          ? err.graphQLErrors[0].extensions.errors
+          : {}
+      );
     },
     variables: values
   });

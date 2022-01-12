@@ -18,17 +18,17 @@ function Register(props) {
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    update(
-      _,
-      {
-        data: { register: userData }
-      }
-    ) {
+    update(_, { data: { register: userData } }) {
       context.login(userData);
+      // eslint-disable-next-line react/prop-types
       props.history.push('/');
     },
     onError(err) {
-      setErrors(err&&err.graphQLErrors[0]?err.graphQLErrors[0].extensions.errors:{});
+      setErrors(
+        err && err.graphQLErrors[0]
+          ? err.graphQLErrors[0].extensions.errors
+          : {}
+      );
     },
     variables: values
   });

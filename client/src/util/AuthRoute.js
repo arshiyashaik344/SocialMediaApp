@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { AuthContext } from '../context/auth';
 
+// eslint-disable-next-line react/prop-types
 function AuthRoute({ component: Component, ...rest }) {
   const { user } = useContext(AuthContext);
 

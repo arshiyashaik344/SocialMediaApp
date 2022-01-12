@@ -1,5 +1,5 @@
 // import gql from 'graphql-tag';
-import {gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 // *** POSTS RELATED QUERIES ***
 
@@ -26,29 +26,29 @@ export const FETCH_POSTS_QUERY = gql`
 `;
 
 export const NEW_POST_SUBSCRIPTION = gql`
-    subscription newPostSub {
-        newPost {
-            id
-            body
-            createdAt
-            username
-            likesCount
-            likes {
-                username
-            }
-            commentsCount
-            comments {
-                id
-                username
-                createdAt
-                body
-            }
-        }
+  subscription newPostSub {
+    newPost {
+      id
+      body
+      createdAt
+      username
+      likesCount
+      likes {
+        username
+      }
+      commentsCount
+      comments {
+        id
+        username
+        createdAt
+        body
+      }
     }
+  }
 `;
 
 export const FETCH_POST_QUERY = gql`
-  query($postId: ID!) {
+  query ($postId: ID!) {
     getPost(postId: $postId) {
       id
       body
@@ -117,7 +117,7 @@ export const DELETE_POST_MUTATION = gql`
 // *** COMMENT RELATED QUERIES ***
 
 export const SUBMIT_COMMENT_MUTATION = gql`
-  mutation($postId: String!, $body: String!) {
+  mutation ($postId: String!, $body: String!) {
     createComment(postId: $postId, body: $body) {
       id
       comments {
@@ -132,25 +132,25 @@ export const SUBMIT_COMMENT_MUTATION = gql`
 `;
 
 export const NEW_COMMENT_SUBSCRIPTION = gql`
-    subscription newCommentSub {
-        newComment {
-            id
-            body
-            createdAt
-            username
-            comments {
-                id
-                createdAt
-                username
-                body
-            }
-            likes {
-                username
-            }
-            likesCount
-            commentsCount
-        }
+  subscription newCommentSub {
+    newComment {
+      id
+      body
+      createdAt
+      username
+      comments {
+        id
+        createdAt
+        username
+        body
+      }
+      likes {
+        username
+      }
+      likesCount
+      commentsCount
     }
+  }
 `;
 
 export const DELETE_COMMENT_MUTATION = gql`
@@ -168,7 +168,7 @@ export const DELETE_COMMENT_MUTATION = gql`
   }
 `;
 
-// *** USER RELATED QUERIES *** 
+// *** USER RELATED QUERIES ***
 
 export const LOGIN_USER = gql`
   mutation login($username: String!, $password: String!) {

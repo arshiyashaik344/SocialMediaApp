@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Button, Confirm, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
-import { 
+import {
   FETCH_POSTS_QUERY,
   DELETE_POST_MUTATION,
   DELETE_COMMENT_MUTATION
-  } from '../util/graphql';
+} from '../util/graphql';
 import MyPopup from '../util/MyPopup';
-
 
 function DeleteButton({ postId, commentId, callback }) {
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -16,22 +16,20 @@ function DeleteButton({ postId, commentId, callback }) {
   const mutation = commentId ? DELETE_COMMENT_MUTATION : DELETE_POST_MUTATION;
 
   const [deletePostOrComment] = useMutation(mutation, {
-
     optimisticResponse: (vars) => {
-     if (!commentId) {
-       return {
-         deletePost : {
-          id: vars.postId,
-          __typename:'Post'
-         }
-       }
-     }
+      if (!commentId) {
+        return {
+          deletePost: {
+            id: vars.postId,
+            __typename: 'Post'
+          }
+        };
+      }
     },
 
-    update: (cache, result) => {
+    update: (cache) => {
       setConfirmOpen(false);
       if (!commentId) {
-
         // console.log(result);
         const data = cache.readQuery({
           query: FETCH_POSTS_QUERY
@@ -39,13 +37,13 @@ function DeleteButton({ postId, commentId, callback }) {
         // // data.getPosts = data.getPosts.filter((p) => p.id !== postId);
         // // proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
 
-        let updatedPosts = data.getPosts.filter((p) => p.id !== postId );
+        let updatedPosts = data.getPosts.filter((p) => p.id !== postId);
 
         cache.writeQuery({
-          query : FETCH_POSTS_QUERY,
-          data : {
+          query: FETCH_POSTS_QUERY,
+          data: {
             ...data,
-            getPosts : [...updatedPosts]
+            getPosts: [...updatedPosts]
           }
         });
 
@@ -89,4 +87,9 @@ function DeleteButton({ postId, commentId, callback }) {
   );
 }
 
+DeleteButton.propTypes = {
+  postId: PropTypes.string.isRequired,
+  commentId: PropTypes.string.isRequired,
+  callback: PropTypes.func.isRequired
+};
 export default DeleteButton;

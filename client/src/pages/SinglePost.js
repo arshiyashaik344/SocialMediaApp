@@ -15,10 +15,7 @@ import { AuthContext } from '../context/auth';
 import LikeButton from '../components/LikeButton';
 import DeleteButton from '../components/DeleteButton';
 import MyPopup from '../util/MyPopup';
-import {
-  FETCH_POST_QUERY,
-  SUBMIT_COMMENT_MUTATION
-} from '../util/graphql';
+import { FETCH_POST_QUERY, SUBMIT_COMMENT_MUTATION } from '../util/graphql';
 
 function SinglePost(props) {
   const postId = props.match.params.postId;
@@ -27,14 +24,12 @@ function SinglePost(props) {
 
   const [comment, setComment] = useState('');
 
-  const {
-    data: { getPost } = {}, error
-  } = useQuery(FETCH_POST_QUERY, {
+  const { data: { getPost } = {}, error } = useQuery(FETCH_POST_QUERY, {
     variables: {
       postId
     }
   });
-  
+
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
       setComment('');
@@ -51,8 +46,7 @@ function SinglePost(props) {
   }
 
   let postMarkup;
-    
-  
+
   if (!getPost) {
     postMarkup = <h3>{!error ? 'Loading Post...' : 'Post not found!!'}</h3>;
   } else {
