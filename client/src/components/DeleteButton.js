@@ -12,9 +12,7 @@ import MyPopup from '../util/MyPopup';
 
 function DeleteButton({ postId, commentId, callback }) {
   const [confirmOpen, setConfirmOpen] = useState(false);
-
   const mutation = commentId ? DELETE_COMMENT_MUTATION : DELETE_POST_MUTATION;
-
   const [deletePostOrComment] = useMutation(mutation, {
     optimisticResponse: (vars) => {
       if (!commentId) {
@@ -70,6 +68,7 @@ function DeleteButton({ postId, commentId, callback }) {
     <>
       <MyPopup content={commentId ? 'Delete comment' : 'Delete post'}>
         <Button
+          id="delete-button"
           as="div"
           color="red"
           floated="right"

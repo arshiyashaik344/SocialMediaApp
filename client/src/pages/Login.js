@@ -9,7 +9,6 @@ import { LOGIN_USER } from '../util/graphql';
 function Login(props) {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
-
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
     username: '',
     password: ''
@@ -41,6 +40,8 @@ function Login(props) {
       <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
         <h1>Login</h1>
         <Form.Input
+          id="user-name"
+          data-testid="input"
           label="Username"
           placeholder="Username.."
           name="username"
@@ -50,6 +51,8 @@ function Login(props) {
           onChange={onChange}
         />
         <Form.Input
+          id="user-password"
+          data-testid="password"
           label="Password"
           placeholder="Password.."
           name="password"
@@ -58,7 +61,7 @@ function Login(props) {
           error={errors.password ? true : false}
           onChange={onChange}
         />
-        <Button type="submit" primary>
+        <Button id="login-button" type="submit" primary>
           Login
         </Button>
       </Form>

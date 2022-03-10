@@ -1,0 +1,209 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "simple-flow-of-the-application;the-one-where-user-logs-in-and-creates-the-post",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "The one where user logs in and creates the post",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5720000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "user navigates to the login form page",
+            "match": {
+              "location": "features/step_definitions/Login_stepdefs.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 180000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "user enters \"arshiyas\" in the userName field",
+            "match": {
+              "location": "features/step_definitions/Login_stepdefs.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2090000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "user enters \"arshi\" in the Password field",
+            "match": {
+              "location": "features/step_definitions/Login_stepdefs.js:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 282000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "user clicks on Login button",
+            "match": {
+              "location": "features/step_definitions/Login_stepdefs.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1153000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "posts page with userName \"Arshiyas\" appears",
+            "match": {
+              "location": "features/step_definitions/Login_stepdefs.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "user creates a post named \"Moon Light\"",
+            "match": {
+              "location": "features/step_definitions/BasicFlow_stepdefs.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 378000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "user clicks on Submit button",
+            "match": {
+              "location": "features/step_definitions/BasicFlow_stepdefs.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1624000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "posts page gets updated with the new post \"Moon Light\"",
+            "match": {
+              "location": "features/step_definitions/BasicFlow_stepdefs.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "user likes the post",
+            "match": {
+              "location": "features/step_definitions/BasicFlow_stepdefs.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 897000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "user goes to the single post page",
+            "match": {
+              "location": "features/step_definitions/BasicFlow_stepdefs.js:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 796000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "user comments on the post as \"Delicious food\"",
+            "match": {
+              "location": "features/step_definitions/BasicFlow_stepdefs.js:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 474000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "user clicks on Submit button in comment form",
+            "match": {
+              "location": "features/step_definitions/BasicFlow_stepdefs.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1245000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "new comment \"Delicious food\" appears on the page",
+            "match": {
+              "location": "features/step_definitions/BasicFlow_stepdefs.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "simple-flow-of-the-application",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Simple Flow of the Application",
+    "tags": [],
+    "uri": "features/SimpleFlow.feature"
+  }
+]

@@ -34,17 +34,18 @@ function PostForm() {
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
+      <Form id="post-form" onSubmit={onSubmit}>
         <h2>Create a post:</h2>
         <Form.Field>
           <Form.Input
             placeholder="Hi World!"
+            id="post-name"
             name="body"
             onChange={onChange}
             value={values.body}
             // error={error ? true : false}
           />
-          <Button type="submit" color="teal">
+          <Button type="submit" color="teal" id="post-submit-button">
             Submit
           </Button>
         </Form.Field>

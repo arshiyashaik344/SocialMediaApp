@@ -9,7 +9,6 @@ import { REGISTER_USER } from '../util/graphql';
 function Register(props) {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
-
   const { onChange, onSubmit, values } = useForm(registerUser, {
     username: '',
     email: '',

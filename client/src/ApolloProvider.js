@@ -7,6 +7,7 @@ import {
   createHttpLink,
   ApolloClient
 } from '@apollo/client';
+// import { ApolloProvider } from '@apollo/react-hooks';
 import { setContext } from 'apollo-link-context';
 // import { WebSocketLink } from '@apollo/client/link/ws';
 // import { getMainDefinition } from '@apollo/client/utilities';

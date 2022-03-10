@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Component rendered input 1`] = `
+<div
+  className="form-container"
+>
+  <form
+    className="ui form"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <h1>
+      Login
+    </h1>
+    <div
+      className="field"
+    >
+      <label
+        htmlFor="user-name"
+      >
+        Username
+      </label>
+      <div
+        className="ui input"
+        data-testid="input"
+      >
+        <input
+          aria-describedby={null}
+          id="user-name"
+          name="username"
+          onChange={[Function]}
+          placeholder="Username.."
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="field"
+    >
+      <label
+        htmlFor="user-password"
+      >
+        Password
+      </label>
+      <div
+        className="ui input"
+        data-testid="password"
+      >
+        <input
+          aria-describedby={null}
+          id="user-password"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password.."
+          type="password"
+          value=""
+        />
+      </div>
+    </div>
+    <button
+      className="ui primary button"
+      id="login-button"
+      onClick={[Function]}
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+</div>
+`;

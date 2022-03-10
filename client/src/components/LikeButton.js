@@ -7,9 +7,8 @@ import { Button, Label, Icon } from 'semantic-ui-react';
 import MyPopup from '../util/MyPopup';
 import { LIKE_POST_MUTATION } from '../util/graphql';
 
-function LikeButton({ user, post: { id, likeCount, likes } }) {
+function LikeButton({ user, post: { id, likesCount, likes } }) {
   const [liked, setLiked] = useState(false);
-
   useEffect(() => {
     if (user && likes.find((like) => like.username === user.username)) {
       setLiked(true);
@@ -22,11 +21,11 @@ function LikeButton({ user, post: { id, likeCount, likes } }) {
 
   const likeButton = user ? (
     liked ? (
-      <Button color="teal">
+      <Button id="like-post" color="teal">
         <Icon name="heart" />
       </Button>
     ) : (
-      <Button color="teal" basic>
+      <Button id="like-post" color="teal" basic>
         <Icon name="heart" />
       </Button>
     )
@@ -40,7 +39,7 @@ function LikeButton({ user, post: { id, likeCount, likes } }) {
     <Button as="div" labelPosition="right" onClick={likePost}>
       <MyPopup content={liked ? 'Unlike' : 'Like'}>{likeButton}</MyPopup>
       <Label basic color="teal" pointing="left">
-        {likeCount}
+        {likesCount}
       </Label>
     </Button>
   );

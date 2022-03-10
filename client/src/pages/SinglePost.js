@@ -21,7 +21,6 @@ function SinglePost(props) {
   const postId = props.match.params.postId;
   const { user } = useContext(AuthContext);
   const commentInputRef = useRef(null);
-
   const [comment, setComment] = useState('');
 
   const { data: { getPost } = {}, error } = useQuery(FETCH_POST_QUERY, {
@@ -57,12 +56,12 @@ function SinglePost(props) {
       username,
       comments,
       likes,
-      likeCount,
-      commentCount
+      likesCount,
+      commentsCount
     } = getPost;
 
     postMarkup = (
-      <Grid>
+      <Grid id="single-post">
         <Grid.Row>
           <Grid.Column width={2}>
             <Image
@@ -80,7 +79,7 @@ function SinglePost(props) {
               </Card.Content>
               <hr />
               <Card.Content extra>
-                <LikeButton user={user} post={{ id, likeCount, likes }} />
+                <LikeButton user={user} post={{ id, likesCount, likes }} />
                 <MyPopup content="Comment on post">
                   <Button
                     as="div"
@@ -91,7 +90,7 @@ function SinglePost(props) {
                       <Icon name="comments" />
                     </Button>
                     <Label basic color="blue" pointing="left">
-                      {commentCount}
+                      {commentsCount}
                     </Label>
                   </Button>
                 </MyPopup>
@@ -102,11 +101,12 @@ function SinglePost(props) {
             </Card>
             {user && (
               <Card fluid>
-                <Card.Content>
+                <Card.Content id="comment-form">
                   <p>Post a comment</p>
                   <Form>
                     <div className="ui action input fluid">
                       <input
+                        id="comment-name"
                         type="text"
                         placeholder="Comment.."
                         name="comment"
@@ -115,6 +115,7 @@ function SinglePost(props) {
                         ref={commentInputRef}
                       />
                       <button
+                        id="comment-submit-button"
                         type="submit"
                         className="ui button teal"
                         disabled={comment.trim() === ''}

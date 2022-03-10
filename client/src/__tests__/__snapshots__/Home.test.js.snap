@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component rendered input 1`] = `
+Array [
+  <div
+    className="ui three column grid"
+    id="posts-grid"
+  >
+    <div
+      className="row page-title"
+    >
+      <h1
+        className="heading"
+        id="posts"
+      >
+        Recent Posts
+      </h1>
+    </div>
+    <div
+      className="row"
+    >
+      <h1
+        className="posts"
+      >
+        Loading posts..
+      </h1>
+    </div>
+  </div>,
+  " ",
+]
+`;

@@ -42,9 +42,11 @@ function Home() {
 
   return (
     <>
-      <Grid columns={3}>
+      <Grid id="posts-grid" columns={3}>
         <Grid.Row className="page-title">
-          <h1>Recent Posts</h1>
+          <h1 id="posts" className="heading">
+            Recent Posts
+          </h1>
         </Grid.Row>
         <Grid.Row>
           {user && (
@@ -53,7 +55,7 @@ function Home() {
             </Grid.Column>
           )}
           {loading ? (
-            <h1>Loading posts..</h1>
+            <h1 className="posts">Loading posts..</h1>
           ) : (
             <Transition.Group>
               {posts &&
@@ -71,17 +73,19 @@ function Home() {
       {loading ? (
         ' '
       ) : (
-        <ReactPaginate
-          previousLabel="Previous"
-          nextLabel="Next"
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName="paginationBttns"
-          previousLinkClassName="previousBttn"
-          nextLinkClassName="nextBttn"
-          disabledClassName="paginationDisabled"
-          activeClassName="paginationActive"
-        />
+        <div id="pagination">
+          <ReactPaginate
+            previousLabel="Previous"
+            nextLabel="Next"
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName="paginationBttns"
+            previousLinkClassName="previousBttn"
+            nextLinkClassName="nextBttn"
+            disabledClassName="paginationDisabled"
+            activeClassName="paginationActive"
+          />
+        </div>
       )}
     </>
   );
